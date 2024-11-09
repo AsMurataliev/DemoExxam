@@ -37,8 +37,8 @@ app.post("/", jsoninterpr, (request, response) => {
 app.put("/:number", jsoninterpr, (request, response) => {
     const number = request.params.number;
     let dto = request.body;
-    for(let i = 0; i < repo.length; i++){
-        if(repo[i].number == number) 
+    for(let i=0; i < repo.length; i++){
+        if(repo[i].number==number) 
         {
             let update = repo[i];
             update.status = dto.status;
