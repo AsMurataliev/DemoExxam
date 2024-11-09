@@ -3,7 +3,7 @@ const express = require("express");
 // создаем объект приложения
 const app = express();
 
-let Order = {
+let order = {
     number: 1,
     day: 11,
     month: 9,
@@ -15,11 +15,20 @@ let Order = {
     status: "в работе",
 };
 
+let repo =[];
+
+
 // определяем обработчик для маршрута "/"
 app.get("/", function(request, response) {
      
     // отправляем ответ
-    response.send(Order);
+    response.send(order);
 });
+
+app.post("/", function(request, response) {
+    let update = request.body;
+    repo.push(update);
+    request.send(repo);
+}
 // начинаем прослушивать подключения на 3000 порту
 app.listen(3000);
