@@ -3,6 +3,8 @@ const express = require("express");
 // создаем объект приложения
 const app = express();
 
+const jsoninterpr = express.json();
+
 let order = {
     number: 1,
     day: 11,
@@ -15,20 +17,22 @@ let order = {
     status: "в работе",
 };
 
-let repo =[];
-
+let repo =[]
+repo.push(order);
 
 // определяем обработчик для маршрута "/"
-app.get("/", function(request, response) {
+app.get("/", (request, response) =>{
      
     // отправляем ответ
-    response.send(order);
+    response.send(repo);
 });
 
-app.post("/", function(request, response) {
+app.post("/", jsoninterpr, (request, response) => {
+
     let update = request.body;
     repo.push(update);
-    request.send(repo);
-}
+    response.send(update);
+});
+
 // начинаем прослушивать подключения на 3000 порту
 app.listen(3000);
