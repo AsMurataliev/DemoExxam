@@ -19,7 +19,7 @@ let Order = {
 app.get("/", function(request, response) {
      
     // отправляем ответ
-    response.send("Order");
+    response.send(Order);
 });
 // начинаем прослушивать подключения на 3000 порту
 app.listen(3000);
